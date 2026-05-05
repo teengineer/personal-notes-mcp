@@ -1,6 +1,14 @@
 from pathlib import Path
 from mcp.server.fastmcp import FastMCP
 import frontmatter
+import sys
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    stream=sys.stderr,  # önemli: stdout DEĞİL!
+    format='%(asctime)s [%(levelname)s] %(message)s'
+)
 
 NOTES_DIR = Path.home() / "claude-notes"
 NOTES_DIR.mkdir(exist_ok=True)
@@ -39,4 +47,8 @@ def list_notes() -> list[str]:
 
 
 if __name__ == "__main__":
-    mcp.run()
+    try:
+        mcp.run()
+    except Exception as e:
+        logging.exception("Server crashed")
+        raise
