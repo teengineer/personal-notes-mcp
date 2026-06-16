@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(claude mcp *)",
-      "mcp__personal-notes__create_note"
+      "mcp__personal-notes__create_note",
+      "Bash(uv run python -c ' *)",
+      "Bash(PYTHONUTF8=1 uv run python -c ' *)"
     ]
   }
 }
